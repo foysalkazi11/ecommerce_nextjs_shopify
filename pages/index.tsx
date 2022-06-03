@@ -2,7 +2,7 @@ import type { NextPage, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import getAllProducts from "../framework/shopify/getallProcts";
+import getAllProducts from "../framework/shopify/product/getallProcts";
 
 export const getStaticProps = async () => {
   const products = await getAllProducts();
