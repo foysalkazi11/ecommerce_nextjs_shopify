@@ -1,8 +1,6 @@
-import fetchApi from "../utils/fetch-api";
-import getAllProductsQuery from "../utils/queries/get-all-products";
+import { fetchApi, normalizeProduct, getAllProductsQuery } from "../utils";
 import { ProductConnection } from "../schema";
-import { normalizeProduct } from "../utils/normalizeProduct";
-import { ProductType } from "../../common/types/product";
+import { ProductType } from "@common/types/product";
 
 interface ReturnType {
   products: ProductConnection;

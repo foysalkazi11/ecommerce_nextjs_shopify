@@ -1,4 +1,4 @@
-import { ProductType } from "../../common/types/product";
+import { ProductType } from "@common/types/product";
 import { ImageEdge, Product as shopifyProduct } from "../schema";
 
 const normalizeImages = ({ edges }: { edges: Array<ImageEdge> }) => {
