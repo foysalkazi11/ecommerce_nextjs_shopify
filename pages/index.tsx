@@ -1,11 +1,11 @@
 import type { InferGetStaticPropsType } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import getAllProducts from "@framework/product/getallProcts";
+import { getConfig } from "@framework/api/config";
 
 export const getStaticProps = async () => {
-  const products = await getAllProducts();
+  const config = getConfig();
+  const products = await getAllProducts(config);
   return {
     props: {
       products,
