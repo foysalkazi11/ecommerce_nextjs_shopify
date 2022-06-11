@@ -1,7 +1,7 @@
 import type { InferGetStaticPropsType } from "next";
-import styles from "../styles/Home.module.css";
 import getAllProducts from "@framework/product/getallProcts";
 import { getConfig } from "@framework/api/config";
+import { Layout } from "@components/common";
 
 export const getStaticProps = async () => {
   const config = getConfig();
@@ -15,7 +15,14 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  return <div className={styles.container}>{JSON?.stringify(products)}</div>;
+  return (
+    <div>
+      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      {JSON?.stringify(products)}
+    </div>
+  );
 };
+
+Home.Layout = Layout;
 
 export default Home;
