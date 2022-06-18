@@ -21,7 +21,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           <Image
             width={540}
             height={540}
-            src={placeholder}
+            src={product?.images[0]?.url ?? placeholder}
             alt={product?.name ?? "Product image"}
             quality="85"
             layout="responsive"

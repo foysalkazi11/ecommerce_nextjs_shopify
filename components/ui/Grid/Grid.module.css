@@ -1,12 +1,29 @@
 .gridContainer {
-  @apply grid grid-cols-3 grid-rows-2;
+  @apply grid grid-cols-1;
+
+  & > * {
+    @apply row-span-1 overflow-hidden;
+    height: 500px;
+    max-height: 800px;
+    @screen lg {
+      height: inherit;
+    }
+  }
 }
 
-.gridContainer > * {
-  @apply row-span-1 overflow-hidden;
-  height: 500px;
-  max-height: 800px;
-  @screen lg {
-    height: inherit;
+@screen lg {
+  .gridContainer {
+    @apply grid-cols-3 grid-rows-2;
   }
+
+  .layoutA {
+    & > *:nth-child(6n + 1),
+    & > *:nth-child(6n + 5) {
+      @apply col-span-2 row-span-2;
+    }
+  }
+}
+
+.layoutB {
+  color: green;
 }
