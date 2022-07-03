@@ -1,5 +1,5 @@
-import { ProductType } from "@common/types/product";
-import { ImageEdge, Product as shopifyProduct } from "../schema";
+import { productPrice, ProductType } from "@common/types/product";
+import { ImageEdge, MoneyV2, Product as shopifyProduct } from "../schema";
 
 const normalizeImages = ({ edges }: { edges: Array<ImageEdge> }) => {
   return edges?.map(({ node: { originalSrc: url, ...rest } }) => {
@@ -10,6 +10,13 @@ const normalizeImages = ({ edges }: { edges: Array<ImageEdge> }) => {
   });
 };
 
+const normalizePrice = ({ amount, currencyCode }: MoneyV2): productPrice => {
+  return {
+    value: +amount,
+    currencyCode,
+  };
+};
+
 export const normalizeProduct = (productNode: shopifyProduct): ProductType => {
   const {
     id,
@@ -18,6 +25,7 @@ export const normalizeProduct = (productNode: shopifyProduct): ProductType => {
     title: name,
     vendor,
     images,
+    priceRange,
     ...rest
   } = productNode;
 
@@ -29,6 +37,7 @@ export const normalizeProduct = (productNode: shopifyProduct): ProductType => {
     path: `/${handle}`,
     slug: handle?.replace(/^\/+|\/+$/g, ""),
     images: normalizeImages(images),
+    price: normalizePrice(priceRange?.minVariantPrice),
     ...rest,
   };
 
