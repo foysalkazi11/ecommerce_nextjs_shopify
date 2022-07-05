@@ -3,7 +3,7 @@ import getAllProducts from "@framework/product/getallProcts";
 import { getConfig } from "@framework/api/config";
 import { Layout } from "@components/common";
 import { ProductCard } from "@components/product";
-import { Grid } from "@components/ui";
+import { Grid, Hero } from "@components/ui";
 
 export const getStaticProps = async () => {
   const config = getConfig();
@@ -18,11 +18,17 @@ export const getStaticProps = async () => {
 
 const Home = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <Grid>
-      {products?.slice(0, 3)?.map((product) => (
-        <ProductCard product={product} key={product?.id} />
-      ))}
-    </Grid>
+    <>
+      <Grid>
+        {products?.slice(0, 3)?.map((product) => (
+          <ProductCard product={product} key={product?.id} />
+        ))}
+      </Grid>
+      <Hero
+        discripation="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec mattis dui. Fusce purus arcu, mollis in dui id, lobortis tempor risus. Ut scelerisque ligula eget aliquam tempus. Mauris nec mauris lobortis lorem cursus commodo vel eget quam. Vivamus a dictum lacus."
+        headline="Lorem ipsum dolor sit amet"
+      />
+    </>
   );
 };
 

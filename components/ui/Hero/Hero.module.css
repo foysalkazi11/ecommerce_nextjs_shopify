@@ -1,0 +1,14 @@
+.root {
+  @apply grid grid-cols-1 gap-4 md:grid-cols-2 py-32;
+}
+.headline {
+  @apply text-4xl leading-10 font-extrabold text-white sm:text-4xl sm:leading-none sm:tracking-tight lg:text-6xl;
+}
+
+.discripation {
+  @apply mt-5 text-xl leading-7 text-white;
+}
+
+.link {
+  @apply block text-white pt-2 font-bold hover:underline cursor-pointer;
+}
