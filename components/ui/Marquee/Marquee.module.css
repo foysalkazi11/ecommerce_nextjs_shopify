@@ -1,0 +1,18 @@
+.root {
+  height: 320px;
+}
+
+.A {
+  @apply bg-black;
+}
+.B {
+  @apply bg-white;
+}
+
+.container {
+  @apply flex;
+
+  & > * {
+    @apply flex-1 px-6 py-4 relative;
+  }
+}
