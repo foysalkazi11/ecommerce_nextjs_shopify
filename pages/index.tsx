@@ -4,6 +4,7 @@ import { getConfig } from "@framework/api/config";
 import { Layout } from "@components/common";
 import { ProductCard } from "@components/product";
 import { Grid, Hero, Marquee } from "@components/ui";
+import { useUIContext } from "@components/ui/context";
 
 export const getStaticProps = async () => {
   const config = getConfig();
@@ -17,6 +18,9 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const context = useUIContext();
+  console.log(context);
+
   return (
     <>
       <Grid>
