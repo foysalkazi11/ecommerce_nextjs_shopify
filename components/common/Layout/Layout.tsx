@@ -10,16 +10,12 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const state = useUIContext();
   return (
     <div className={styles.root}>
-      <Sidebar
-        isOpenSidebar={state?.isOpenSidebar}
-        toggleSidebar={state?.toggleSidebar}
-      >
+      <Sidebar>
         <CartSidebar />
       </Sidebar>
-      <Navbar toggleSidebar={state?.toggleSidebar} />
+      <Navbar />
       <main className="fit">{children}</main>
       <Footer />
     </div>

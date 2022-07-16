@@ -1,19 +1,41 @@
-import { FC } from "react";
+import { FC, MutableRefObject, RefObject, useEffect, useRef } from "react";
+import {
+  clearAllBodyScrollLocks,
+  disableBodyScroll,
+  enableBodyScroll,
+} from "body-scroll-lock";
+import { useUIContext } from "../context";
 
 interface Props {
   children: any;
-  isOpenSidebar: boolean;
-  toggleSidebar: () => void;
 }
 
-const Sidebar: FC<Props> = ({ children, isOpenSidebar, toggleSidebar }) => {
+const Sidebar: FC<Props> = ({ children }) => {
+  const ref = useRef() as MutableRefObject<HTMLDivElement>;
+  const state = useUIContext();
+
+  useEffect(() => {
+    if (ref.current) {
+      if (state.isOpenSidebar) {
+        disableBodyScroll(ref.current);
+      } else {
+        enableBodyScroll(ref.current);
+      }
+    }
+    return () => {
+      clearAllBodyScrollLocks();
+    };
+  }, [state.isOpenSidebar]);
   return (
     <>
-      {isOpenSidebar ? (
-        <div className="fixed inset-0 overflow-hidden h-full z-50 transition-all">
+      {state.isOpenSidebar ? (
+        <div
+          ref={ref}
+          className="fixed inset-0 overflow-hidden h-full z-50 transition-all"
+        >
           <div className="absolute inset-0 overflow-hidden">
             <div
-              onClick={toggleSidebar}
+              onClick={state.toggleSidebar}
               className="absolute inset-0 bg-black bg-opacity-50 transition-opacity"
             />
             <section className="absolute inset-y-0 right-0 pl-10 max-w-full flex sm:pl-16 outline-none">

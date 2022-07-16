@@ -4,11 +4,7 @@ import React from "react";
 import UserNav from "../UserNav";
 import s from "./Navbar.module.css";
 
-interface Props {
-  toggleSidebar: () => void;
-}
-
-const Navbar = ({ toggleSidebar }: Props) => {
+const Navbar = () => {
   return (
     <Container>
       <div className={s.root}>
@@ -24,14 +20,14 @@ const Navbar = ({ toggleSidebar }: Props) => {
               <a className={s.link}>Clothes</a>
             </Link>
             <Link href={"#"}>
-              <a className={s.link}>Accesories</a>
+              <a className={s.link}>Accessories</a>
             </Link>
             <Link href={"#"}>
               <a className={s.link}>Shoes</a>
             </Link>
           </nav>
         </div>
-        <UserNav toggleSidebar={toggleSidebar} />
+        <UserNav />
       </div>
     </Container>
   );

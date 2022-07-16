@@ -1,17 +1,15 @@
 import { Bag, Heart } from "@components/icons";
+import { useUIContext } from "@components/ui/context";
 import Link from "next/link";
 import React from "react";
 import s from "./UserNav.module.css";
 
-interface Props {
-  toggleSidebar: () => void;
-}
-
-const UserNav = ({ toggleSidebar }: Props) => {
+const UserNav = () => {
+  const state = useUIContext();
   return (
     <nav>
       <ul className={s.list}>
-        <li className={s.item} onClick={toggleSidebar}>
+        <li className={s.item} onClick={state.toggleSidebar}>
           <Bag />
         </li>
         <li className={s.item}>
