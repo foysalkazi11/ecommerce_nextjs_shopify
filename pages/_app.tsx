@@ -3,16 +3,16 @@ import type { AppProps } from "next/app";
 import { FC, ReactNode } from "react";
 import { UIProvider } from "@components/ui/context";
 
-interface Childern {
+interface Children {
   children: ReactNode;
 }
 
-const Noop = ({ children }: Childern) => <>{children}</>;
+const Noop = ({ children }: Children) => <>{children}</>;
 
 function MyApp({
   Component,
   pageProps,
-}: AppProps & { Component: { Layout: FC<Childern> } }) {
+}: AppProps & { Component: { Layout: FC<Children> } }) {
   const Layout = Component.Layout ?? Noop;
   return (
     <UIProvider>

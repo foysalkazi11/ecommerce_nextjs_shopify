@@ -1,15 +1,14 @@
 import { CartSidebar } from "@components/cart";
 import { Footer, Navbar } from "@components/common";
 import { Sidebar } from "@components/ui";
-import { useUIContext } from "@components/ui/context";
-import React, { ReactNode } from "react";
+import React, { FC, ReactNode } from "react";
 import styles from "./Layout.module.css";
 
 interface LayoutProps {
   children: ReactNode;
 }
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout: FC<LayoutProps> = ({ children }: LayoutProps) => {
   return (
     <div className={styles.root}>
       <Sidebar>

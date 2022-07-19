@@ -1,4 +1,11 @@
-import { createContext, FC, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  FC,
+  ReactNode,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 
 interface UIState {
   isOpenSidebar: boolean;
@@ -10,10 +17,13 @@ const UIContext = createContext<UIState>({} as UIState);
 export const UIProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [isOpenSidebar, setOpenSidebar] = useState(false);
 
-  const uiState = {
-    isOpenSidebar,
-    toggleSidebar: () => setOpenSidebar((prev) => !prev),
-  };
+  const uiState = useMemo(() => {
+    return {
+      isOpenSidebar,
+      toggleSidebar: () => setOpenSidebar((prev) => !prev),
+    };
+  }, [isOpenSidebar]);
+
   return <UIContext.Provider value={uiState}>{children}</UIContext.Provider>;
 };
 
